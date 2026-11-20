@@ -1,0 +1,18 @@
+[
+  {
+    "id": "Qwen/Qwen2.5-7B-Instruct",
+    "likes": 1200,
+    "downloads": 500000,
+    "pipeline_tag": "text-generation",
+    "library_name": "transformers",
+    "tags": ["transformers", "license:apache-2.0", "llm"]
+  },
+  {
+    "id": "openai/whisper-large-v3",
+    "likes": 800,
+    "downloads": 200000,
+    "pipeline_tag": "automatic-speech-recognition",
+    "library_name": "transformers",
+    "tags": ["license:mit", "asr"]
+  }
+]

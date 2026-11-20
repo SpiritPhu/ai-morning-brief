@@ -1,0 +1,48 @@
+services:
+  db:
+    image: pgvector/pgvector:pg16
+    environment:
+      POSTGRES_USER: brief
+      POSTGRES_PASSWORD: brief
+      POSTGRES_DB: brief
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U brief -d brief"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  worker:
+    build: .
+    command: python -m app.scheduler
+    env_file: .env
+    depends_on:
+      db:
+        condition: service_healthy
+    volumes:
+      - ./config:/app/config
+      - hf_cache:/cache/huggingface
+    environment:
+      HF_HOME: /cache/huggingface
+
+  dashboard:
+    build: .
+    command: streamlit run dashboard/Home.py --server.port 8501 --server.address 0.0.0.0
+    env_file: .env
+    ports:
+      - "8501:8501"
+    depends_on:
+      db:
+        condition: service_healthy
+    volumes:
+      - ./config:/app/config
+      - hf_cache:/cache/huggingface
+    environment:
+      HF_HOME: /cache/huggingface
+
+volumes:
+  pgdata:
+  hf_cache:

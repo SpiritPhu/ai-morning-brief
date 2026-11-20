@@ -1,0 +1,176 @@
+connectors:
+  hf_papers:
+    enabled: true
+    type: paper
+    weight: 0.8
+    params: {}
+
+  hf_models:
+    enabled: true
+    type: model
+    weight: 0.7
+    params:
+      limit: 50
+
+  hf_spaces:
+    enabled: true
+    type: space
+    weight: 0.6
+    params:
+      limit: 50
+
+  github_trending:
+    enabled: true
+    type: repo
+    weight: 0.7
+    params:
+      since: daily  # daily | weekly | monthly
+
+  github_search:
+    enabled: true
+    type: repo
+    weight: 0.7
+    params:
+      queries:
+        - "topic:llm created:>{d-7}"
+        - "topic:ai-agents created:>{d-7}"
+        - "topic:rag pushed:>{d-1} stars:>200"
+      per_page: 30
+
+  arxiv:
+    enabled: true
+    type: paper
+    weight: 0.4
+    params:
+      categories:
+        - cs.AI
+        - cs.CL
+        - cs.LG
+        - cs.CV
+        - cs.CR
+      max_results: 200
+      hours_window: 36
+
+  rss:
+    enabled: true
+    type: blog
+    weight: 1.0
+    params:
+      hours_window: 48
+      feeds:
+        - name: Hugging Face Blog
+          url: https://huggingface.co/blog/feed.xml
+          organization: huggingface
+          is_big_tech: true
+          weight: 1.0
+          verify: true
+        - name: OpenAI News
+          url: https://openai.com/news/rss.xml
+          organization: openai
+          is_big_tech: true
+          weight: 1.0
+          verify: true
+        - name: Google DeepMind
+          url: https://deepmind.google/blog/rss.xml
+          organization: deepmind
+          is_big_tech: true
+          weight: 1.0
+          verify: true
+        - name: Google Research
+          url: https://research.google/blog/rss/
+          organization: google
+          is_big_tech: true
+          weight: 1.0
+          verify: true
+        - name: Microsoft Research
+          url: https://www.microsoft.com/en-us/research/feed/
+          organization: microsoft
+          is_big_tech: true
+          weight: 1.0
+          verify: true
+        - name: NVIDIA Technical Blog
+          url: https://developer.nvidia.com/blog/feed
+          organization: nvidia
+          is_big_tech: true
+          weight: 1.0
+          verify: true
+        - name: AWS Machine Learning Blog
+          url: https://aws.amazon.com/blogs/machine-learning/feed/
+          organization: amazon
+          is_big_tech: true
+          weight: 1.0
+          verify: true
+        # chưa có RSS chính thức, bổ sung sau
+        - name: Meta AI
+          url: ""
+          organization: meta
+          is_big_tech: true
+          weight: 1.0
+          verify: false
+        - name: Anthropic
+          url: ""
+          organization: anthropic
+          is_big_tech: true
+          weight: 1.0
+          verify: false
+
+  hackernews:
+    enabled: true
+    type: community
+    weight: 0.6
+    params:
+      min_points: 10
+      keywords:
+        - LLM
+        - GPT
+        - AI agent
+        - open-source model
+        - Hugging Face
+        - RAG
+        - diffusion
+        - Claude
+        - Gemini
+        - Llama
+        - Qwen
+        - DeepSeek
+
+  reddit:
+    enabled: true
+    type: community
+    weight: 0.5
+    params:
+      subreddits:
+        - MachineLearning
+        - LocalLLaMA
+      limit: 25
+
+big_tech_orgs:
+  - openai
+  - google
+  - deepmind
+  - microsoft
+  - meta
+  - facebook
+  - anthropic
+  - nvidia
+  - apple
+  - amazon
+  - qwen
+  - alibaba
+  - deepseek
+  - mistralai
+
+ai_keywords:
+  - llm
+  - gpt
+  - agent
+  - diffusion
+  - transformer
+  - rag
+  - embedding
+  - model
+  - inference
+  - speech
+  - vision
+  - ai
+  - ml

@@ -1,0 +1,32 @@
+{
+  "data": {
+    "children": [
+      {
+        "data": {
+          "id": "abc123",
+          "title": "New local Llama model release",
+          "url": "https://example.com/llama",
+          "permalink": "/r/LocalLLaMA/comments/abc123/new/",
+          "score": 500,
+          "num_comments": 80,
+          "stickied": false,
+          "created_utc": 1731888000,
+          "selftext": ""
+        }
+      },
+      {
+        "data": {
+          "id": "sticky1",
+          "title": "Rules",
+          "url": "https://reddit.com",
+          "permalink": "/r/LocalLLaMA/comments/sticky1/",
+          "score": 1,
+          "num_comments": 0,
+          "stickied": true,
+          "created_utc": 1731888000,
+          "selftext": ""
+        }
+      }
+    ]
+  }
+}

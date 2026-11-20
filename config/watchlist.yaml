@@ -1,0 +1,59 @@
+- name: SOC AI
+  description: AI for Security Operations Center — SIEM, alert triage, threat detection
+  keywords:
+    - SOC
+    - SIEM
+    - alert triage
+    - incident
+    - threat detection
+    - Sentinel
+    - Defender
+  priority: 1
+
+- name: ASR/Speech
+  description: Automatic speech recognition, TTS, Vietnamese speech systems
+  keywords:
+    - ASR
+    - speech recognition
+    - Zipformer
+    - Whisper
+    - sherpa-onnx
+    - TTS
+    - Vietnamese speech
+  priority: 1
+
+- name: Document AI/OCR
+  description: Document understanding, OCR, layout analysis with VLM
+  keywords:
+    - OCR
+    - document understanding
+    - VLM OCR
+    - layout
+  priority: 2
+
+- name: Ticket classification
+  description: ITSM / helpdesk ticket text classification
+  keywords:
+    - ticket
+    - ITSM
+    - helpdesk
+    - text classification
+  priority: 2
+
+- name: RAG
+  description: Retrieval-augmented generation, embeddings, rerankers
+  keywords:
+    - RAG
+    - retrieval
+    - reranker
+    - embedding
+  priority: 1
+
+- name: Agents
+  description: AI agents, MCP, tool calling, multi-agent systems
+  keywords:
+    - agent
+    - MCP
+    - tool calling
+    - multi-agent
+  priority: 1

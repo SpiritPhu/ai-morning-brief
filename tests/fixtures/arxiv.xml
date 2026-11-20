@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <entry>
+    <id>http://arxiv.org/abs/2401.11111v1</id>
+    <title>Efficient RAG Retrieval</title>
+    <summary>A paper about retrieval-augmented generation.</summary>
+    <published>2026-11-17T12:00:00Z</published>
+    <author><name>Dana</name></author>
+  </entry>
+</feed>

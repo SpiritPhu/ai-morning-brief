@@ -1,0 +1,9 @@
+weights:
+  velocity: 0.30
+  cross_source: 0.25
+  source_weight: 0.20
+  relevance: 0.15
+  freshness: 0.10
+freshness_half_life_hours: 36
+top_n: 10
+dedup_similarity_threshold: 0.88

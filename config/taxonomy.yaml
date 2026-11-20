@@ -1,0 +1,124 @@
+groups:
+  Models:
+    - id: llm
+      name: LLM
+      description: Large language models and foundation text models
+      keywords: [llm, language model, gpt, llama, qwen, mistral, deepseek, foundation model]
+    - id: multimodal_vlm
+      name: Multimodal/VLM
+      description: Vision-language and multimodal models
+      keywords: [multimodal, vlm, vision-language, clip, image-text]
+    - id: speech_asr_tts
+      name: Speech/ASR/TTS
+      description: Speech recognition and synthesis
+      keywords: [asr, tts, speech, whisper, audio, voice]
+    - id: vision
+      name: Vision
+      description: Computer vision models
+      keywords: [vision, computer vision, detection, segmentation, diffusion]
+    - id: embedding
+      name: Embedding
+      description: Text/image embedding models
+      keywords: [embedding, sentence transformer, vector, dense retrieval]
+    - id: small_on_device
+      name: Small/On-device
+      description: Small and on-device models
+      keywords: [on-device, small model, mobile, edge, quantization]
+
+  Agents:
+    - id: agent_framework
+      name: Agent framework
+      description: Frameworks for building AI agents
+      keywords: [agent framework, langchain, llamaindex, autogen, crewai]
+    - id: coding_agent
+      name: Coding agent
+      description: Coding and software engineering agents
+      keywords: [coding agent, code agent, swe-agent, cursor, copilot]
+    - id: mcp_tool_use
+      name: MCP/Tool use
+      description: Model Context Protocol and tool calling
+      keywords: [mcp, tool use, tool calling, function calling]
+    - id: multi_agent
+      name: Multi-agent
+      description: Multi-agent collaboration systems
+      keywords: [multi-agent, multi agent, swarm]
+    - id: agent_memory
+      name: Agent memory
+      description: Memory systems for agents
+      keywords: [agent memory, long-term memory, episodic memory]
+
+  Techniques:
+    - id: fine_tuning_rlhf
+      name: Fine-tuning/RLHF
+      description: Fine-tuning, RLHF, preference optimization
+      keywords: [fine-tuning, finetune, rlhf, dpo, lora, peft]
+    - id: reasoning
+      name: Reasoning
+      description: Reasoning and chain-of-thought techniques
+      keywords: [reasoning, chain-of-thought, cot, o1, deep reasoning]
+    - id: rag_retrieval
+      name: RAG/Retrieval
+      description: Retrieval-augmented generation
+      keywords: [rag, retrieval, reranker, vector search]
+    - id: long_context
+      name: Long context
+      description: Long-context modeling
+      keywords: [long context, context window, 128k, 1m context]
+    - id: quantization_distillation
+      name: Quantization/Distillation
+      description: Model compression techniques
+      keywords: [quantization, distillation, ggml, gguf, awq, gptq]
+
+  Infra:
+    - id: inference_serving
+      name: Inference/Serving
+      description: Inference engines and serving stacks
+      keywords: [inference, vllm, tgi, serving, triton]
+    - id: training_infra
+      name: Training infra
+      description: Training infrastructure
+      keywords: [training, deepspeed, fsdp, megatron]
+    - id: llmops_observability
+      name: LLMOps/Observability
+      description: LLMOps and observability
+      keywords: [llmops, observability, tracing, langfuse, prompt]
+    - id: evaluation_benchmark
+      name: Evaluation/Benchmark
+      description: Evaluation and benchmarks
+      keywords: [benchmark, evaluation, mmlu, leaderboard]
+
+  Risk:
+    - id: ai_security
+      name: AI Security
+      description: AI security and adversarial risks
+      keywords: [ai security, jailbreak, prompt injection, adversarial]
+    - id: safety_governance
+      name: Safety/Governance
+      description: AI safety and governance
+      keywords: [safety, governance, alignment, responsible ai]
+    - id: license
+      name: License
+      description: Model and data licensing
+      keywords: [license, apache, mit, open source license]
+
+  Applied:
+    - id: cybersecurity
+      name: Cybersecurity
+      description: Applied AI for cybersecurity
+      keywords: [cybersecurity, soc, siem, threat detection]
+    - id: document_ai_ocr
+      name: Document AI/OCR
+      description: Document AI and OCR
+      keywords: [ocr, document ai, layout, pdf]
+    - id: customer_support
+      name: Customer support
+      description: Customer support automation
+      keywords: [customer support, chatbot, helpdesk]
+    - id: finance
+      name: Finance
+      description: Applied AI for finance
+      keywords: [finance, fintech, trading]
+    - id: healthcare
+      name: Healthcare
+      description: Applied AI for healthcare
+      keywords: [healthcare, medical, clinical]
