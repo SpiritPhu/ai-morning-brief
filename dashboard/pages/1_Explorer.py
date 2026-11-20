@@ -77,7 +77,11 @@ try:
                 render_story_card(s)
                 with st.expander("Items"):
                     for it in s.get("items") or []:
-                        st.markdown(f"- **{it['source_key']}**: [{it['title']}]({it['url']})")
+                        appeared = it.get("first_appeared") or it.get("first_seen_at") or ""
+                        appeared_txt = f" · xuất hiện {appeared}" if appeared else ""
+                        st.markdown(
+                            f"- **{it['source_key']}**: [{it['title']}]({it['url']}){appeared_txt}"
+                        )
                 st.divider()
 except Exception as exc:
     st.warning(f"DB chưa sẵn sàng: {exc}")

@@ -64,4 +64,8 @@ for w in edited or watchlist:
     st.markdown(f"### {w['name']} — {len(matched)} stories")
     for s in matched[:20]:
         title = (s.get("summary") or {}).get("title_vi") or s.get("title")
-        st.markdown(f"- `{s.get('story_date')}` [{title}]({s.get('canonical_url')})")
+        appeared = s.get("first_appeared") or s.get("story_date")
+        st.markdown(
+            f"- brief `{s.get('story_date')}` · xuất hiện `{appeared}` "
+            f"[{title}]({s.get('canonical_url')})"
+        )

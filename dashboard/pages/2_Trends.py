@@ -54,7 +54,15 @@ try:
         window = st.selectbox("Stars window", [7, 30], index=0)
         d0 = end - timedelta(days=window)
         metrics = session.execute(
-            select(Item.title, Item.url, ItemMetric.snapshot_date, ItemMetric.value)
+            select(
+                Item.title,
+                Item.url,
+                Item.description,
+                Item.first_seen_at,
+                Item.published_at,
+                ItemMetric.snapshot_date,
+                ItemMetric.value,
+            )
             .join(ItemMetric, ItemMetric.item_id == Item.id)
             .where(
                 Item.source_key.in_(["github_trending", "github_search"]),
@@ -63,10 +71,68 @@ try:
             )
         ).all()
         if metrics:
-            mdf = pd.DataFrame(metrics, columns=["title", "url", "date", "stars"])
-            piv = mdf.groupby("title").agg(min_stars=("stars", "min"), max_stars=("stars", "max"), url=("url", "first"))
+            mdf = pd.DataFrame(
+                metrics,
+                columns=[
+                    "title",
+                    "url",
+                    "description",
+                    "first_seen_at",
+                    "published_at",
+                    "date",
+                    "stars",
+                ],
+            )
+
+            def _short(text: str, n: int = 140) -> str:
+                text = (text or "").strip().replace("\n", " ")
+                return text if len(text) <= n else text[: n - 1].rstrip() + "…"
+
+            def _first_appeared(row) -> str:
+                dates = []
+                for col in ("published_at", "first_seen_at"):
+                    val = row.get(col)
+                    if val is None or (isinstance(val, float) and pd.isna(val)):
+                        continue
+                    dates.append(str(val)[:10])
+                return min(dates) if dates else ""
+
+            piv = mdf.groupby("title", as_index=False).agg(
+                min_stars=("stars", "min"),
+                max_stars=("stars", "max"),
+                url=("url", "first"),
+                description=("description", "first"),
+                first_seen_at=("first_seen_at", "min"),
+                published_at=("published_at", "min"),
+            )
             piv["delta"] = piv["max_stars"] - piv["min_stars"]
-            st.dataframe(piv.sort_values("delta", ascending=False).head(20), use_container_width=True)
+            piv["description"] = piv["description"].fillna("").map(_short)
+            piv["first_appeared"] = piv.apply(_first_appeared, axis=1)
+            out = (
+                piv.sort_values("delta", ascending=False)
+                .head(20)[
+                    [
+                        "title",
+                        "description",
+                        "first_appeared",
+                        "delta",
+                        "min_stars",
+                        "max_stars",
+                        "url",
+                    ]
+                ]
+                .rename(
+                    columns={
+                        "title": "repo",
+                        "description": "mô tả",
+                        "first_appeared": "xuất hiện lần đầu",
+                        "delta": "stars Δ",
+                        "min_stars": "stars min",
+                        "max_stars": "stars max",
+                    }
+                )
+            )
+            st.dataframe(out, use_container_width=True)
         else:
             st.caption("Chưa có snapshot stars")
 except Exception as exc:

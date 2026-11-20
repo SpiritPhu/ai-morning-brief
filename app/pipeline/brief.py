@@ -90,16 +90,30 @@ def _rising(session: Session, target_date: date) -> dict[str, list[dict[str, Any
             .order_by(ItemMetric.value.desc())
             .limit(limit)
         ).all()
-        return [
-            {
-                "title": item.title,
-                "url": item.url,
-                "metric": metric,
-                "value": met.value,
-                "source": item.source_key,
-            }
-            for item, met in rows
-        ]
+        out = []
+        for item, met in rows:
+            appeared_candidates = []
+            for ts in (item.published_at, item.first_seen_at):
+                if ts is None:
+                    continue
+                appeared_candidates.append(
+                    ts.date().isoformat() if hasattr(ts, "date") else str(ts)[:10]
+                )
+            desc = (item.description or "").strip().replace("\n", " ")
+            if len(desc) > 160:
+                desc = desc[:159].rstrip() + "…"
+            out.append(
+                {
+                    "title": item.title,
+                    "url": item.url,
+                    "description": desc,
+                    "first_appeared": min(appeared_candidates) if appeared_candidates else "",
+                    "metric": metric,
+                    "value": met.value,
+                    "source": item.source_key,
+                }
+            )
+        return out
 
     return {
         "repos": top_metric(["github_trending", "github_search"], "stars_today"),

@@ -1,3 +1,6 @@
+# Priority: 1 = cao nhất, 3 = thấp hơn
+# Watchlist = chủ đề ưu tiên theo dõi (không thay taxonomy toàn diện)
+
 - name: SOC AI
   description: AI for Security Operations Center — SIEM, alert triage, threat detection
   keywords:
@@ -8,6 +11,7 @@
     - threat detection
     - Sentinel
     - Defender
+    - cybersecurity
   priority: 1
 
 - name: ASR/Speech
@@ -20,25 +24,8 @@
     - sherpa-onnx
     - TTS
     - Vietnamese speech
+    - voice AI
   priority: 1
-
-- name: Document AI/OCR
-  description: Document understanding, OCR, layout analysis with VLM
-  keywords:
-    - OCR
-    - document understanding
-    - VLM OCR
-    - layout
-  priority: 2
-
-- name: Ticket classification
-  description: ITSM / helpdesk ticket text classification
-  keywords:
-    - ticket
-    - ITSM
-    - helpdesk
-    - text classification
-  priority: 2
 
 - name: RAG
   description: Retrieval-augmented generation, embeddings, rerankers
@@ -47,6 +34,8 @@
     - retrieval
     - reranker
     - embedding
+    - vector search
+    - knowledge base
   priority: 1
 
 - name: Agents
@@ -56,4 +45,169 @@
     - MCP
     - tool calling
     - multi-agent
+    - agentic
+    - Autogen
+    - CrewAI
   priority: 1
+
+- name: Banking & FinTech AI
+  description: AI ứng dụng tài chính ngân hàng — risk, fraud, credit, payments, wealth, core banking
+  keywords:
+    - banking
+    - fintech
+    - finance AI
+    - financial services
+    - credit scoring
+    - fraud detection
+    - AML
+    - KYC
+    - payments
+    - open banking
+    - wealth management
+    - trading
+    - risk model
+    - Basel
+    - core banking
+    - lending
+    - underwriting
+  priority: 1
+
+- name: Insurance AI
+  description: AI trong bảo hiểm — underwriting, claims, actuarial, pricing, fraud bảo hiểm
+  keywords:
+    - insurance
+    - insurtech
+    - claims
+    - claim processing
+    - underwriting
+    - actuarial
+    - policy administration
+    - insurance fraud
+    - FNOL
+    - premium pricing
+    - reinsurance
+    - life insurance
+    - P&C
+    - health insurance
+  priority: 1
+
+- name: Cards & Payments AI
+  description: AI cho thẻ và thanh toán — card fraud, authorization, issuer/acquirer, open banking payments
+  keywords:
+    - credit card
+    - debit card
+    - card fraud
+    - card issuing
+    - issuer
+    - acquirer
+    - payment card
+    - authorization
+    - chargeback
+    - PCI
+    - POS
+    - QR payment
+    - real-time payments
+    - instant payment
+    - remittance
+    - wallet
+    - Visa
+    - Mastercard
+    - NAPAS
+  priority: 1
+
+- name: Treasury & Markets AI
+  description: AI treasury / markets — liquidity, FX, ALM, trading, market risk
+  keywords:
+    - treasury
+    - ALM
+    - liquidity
+    - cash management
+    - FX
+    - foreign exchange
+    - market risk
+    - VaR
+    - trading desk
+    - fixed income
+    - bond
+    - money market
+    - interest rate
+    - hedge
+    - capital markets
+    - quantitative trading
+  priority: 1
+
+- name: Big Tech & Platform AI
+  description: Phát hành / nền tảng từ OpenAI, Google, Microsoft, Meta, Amazon, NVIDIA, Anthropic...
+  keywords:
+    - OpenAI
+    - Google DeepMind
+    - Gemini
+    - Microsoft
+    - Azure OpenAI
+    - Copilot
+    - Meta AI
+    - Llama
+    - Anthropic
+    - Claude
+    - Amazon Bedrock
+    - AWS
+    - NVIDIA
+    - Apple Intelligence
+    - Mistral
+    - DeepSeek
+    - Qwen
+  priority: 1
+
+- name: Enterprise AI / LLMOps
+  description: Triển khai AI doanh nghiệp — governance, evaluation, serving, cost, private AI
+  keywords:
+    - enterprise AI
+    - LLMOps
+    - MLOps
+    - AI governance
+    - responsible AI
+    - evaluation
+    - observability
+    - vLLM
+    - inference
+    - private LLM
+    - on-prem
+    - AI platform
+  priority: 1
+
+- name: Document AI/OCR
+  description: Document understanding, OCR, layout analysis with VLM — quan trọng cho hồ sơ tín dụng, KYC, hợp đồng
+  keywords:
+    - OCR
+    - document understanding
+    - VLM OCR
+    - layout
+    - IDP
+    - document AI
+    - contract analysis
+  priority: 2
+
+- name: Ticket classification
+  description: ITSM / helpdesk / customer support ticket text classification
+  keywords:
+    - ticket
+    - ITSM
+    - helpdesk
+    - text classification
+    - customer support
+  priority: 2
+
+- name: Risk, Safety & Compliance
+  description: AI security, safety, license, regulatory compliance (quan trọng với ngân hàng)
+  keywords:
+    - AI security
+    - prompt injection
+    - jailbreak
+    - safety
+    - alignment
+    - compliance
+    - regulation
+    - license
+    - privacy
+    - data residency
+  priority: 2

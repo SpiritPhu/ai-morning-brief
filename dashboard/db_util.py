@@ -94,10 +94,52 @@ def load_latest_pipeline() -> Optional[dict]:
         }
 
 
+def _to_date_str(value) -> Optional[str]:
+    if value is None:
+        return None
+    if hasattr(value, "date") and callable(value.date):
+        try:
+            return value.date().isoformat()
+        except Exception:
+            pass
+    if hasattr(value, "isoformat"):
+        return str(value)[:10]
+    text = str(value)
+    return text[:10] if text else None
+
+
+def _item_first_appeared(it: Item) -> Optional[str]:
+    """Earliest signal: published_at vs first_seen_at."""
+    candidates = [d for d in (_to_date_str(it.published_at), _to_date_str(it.first_seen_at)) if d]
+    return min(candidates) if candidates else None
+
+
 def _story_dict(s: Story) -> dict:
+    items_payload = []
+    appeared_dates: list[str] = []
+    for it in s.items or []:
+        first_appeared = _item_first_appeared(it)
+        if first_appeared:
+            appeared_dates.append(first_appeared)
+        items_payload.append(
+            {
+                "id": it.id,
+                "source_key": it.source_key,
+                "title": it.title,
+                "url": it.url,
+                "description": it.description,
+                "published_at": _to_date_str(it.published_at),
+                "first_seen_at": _to_date_str(it.first_seen_at),
+                "first_appeared": first_appeared,
+            }
+        )
+    story_first = min(appeared_dates) if appeared_dates else _to_date_str(s.created_at) or (
+        s.story_date.isoformat() if s.story_date else None
+    )
     return {
         "id": s.id,
         "story_date": s.story_date,
+        "first_appeared": story_first,
         "title": s.title,
         "canonical_url": s.canonical_url,
         "source_count": s.source_count,
@@ -117,16 +159,7 @@ def _story_dict(s: Story) -> dict:
             "action": s.summary.action,
             "categories": s.summary.categories or [],
         },
-        "items": [
-            {
-                "id": it.id,
-                "source_key": it.source_key,
-                "title": it.title,
-                "url": it.url,
-                "description": it.description,
-            }
-            for it in (s.items or [])
-        ],
+        "items": items_payload,
     }
 
 
